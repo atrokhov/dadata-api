@@ -1,0 +1,40 @@
+h1
+  | Users
+table
+  thead
+    tr
+      th
+        | #
+      th
+        | Email
+      th
+        | Name
+      th
+        | Surname
+      th
+        | Patronymic
+      th
+        | Gender
+      th
+        | Last gender update
+      th[colspan="1"]
+        | Actions
+  tbody
+    - @users.each do |user|
+      tr.line
+        td
+          = user.id
+        td
+          = user.email
+        td
+          = user.name
+        td
+          = user.surname
+        td
+          = user.patronymic
+        td
+          = user.gender
+        td
+          = user.last_gender_update
+        td
+          = link_to 'Edit', edit_user_path(user)

@@ -1,0 +1,35 @@
+h2
+  | Edit User
+= form_with(model: @user) do |f|
+  .field
+    = f.label :email
+  	br
+  	= f.email_field :email, autofocus: true, autocomplete: "email"
+
+  .field
+    = f.label :surname
+  	br
+  	= f.text_field :surname, autocomplete: "surname"
+
+  .field
+    = f.label :name
+  	br
+  	= f.text_field :name, autocomplete: "name"
+
+  .field
+    = f.label :patronymic
+  	br
+  	= f.text_field :patronymic, autocomplete: "patronymic"
+
+  = link_to "Get gender", get_gender_path(@user), method: :post
+
+  p 
+  	| Last gender update:
+  	= @user.last_gender_update
+
+  p 
+  	| Gender:
+  	= @user.gender
+
+  .actions
+    = f.submit "Update"
