@@ -62,3 +62,4 @@ end
 gem 'devise', '~> 4.8.0'
 gem 'bootstrap', '~> 5.0.1'
 gem "slim-rails", '~> 3.2.0'
+gem 'rexml', '~> 3.2.5'

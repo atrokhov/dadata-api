@@ -11,6 +11,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if @user.gender == nil
+      @gender = get_gender_request(@user)
+    else
+      @gender = @user.gender
+    end
   end
 
   def update
@@ -24,30 +29,7 @@ class UsersController < ApplicationController
   end
 
   def get_gender
-    uri = URI.parse('https://cleaner.dadata.ru/api/v1/clean/name')
-    request = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' =>'application/json'})
-
-    request["Authorization"] = ENV['DADATA_AUTH_TOKEN']
-    request["X-Secret"] = ENV['DADATA_SECRET']
-
-    data = "#{@user.surname} #{@user.name} #{@user.patronymic}".to_json
-    request.body = "[#{data}]"
-
-    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
-      http.request(request)
-    end
-
-    gender = JSON.parse(res.read_body)[0]['gender']
-
-    case gender
-    when 'Ж'
-      @user.gender = :female
-    else
-      @user.gender = :male
-    end
-
-    @user.last_gender_update = DateTime.now
-    @user.save
+    @gender = get_gender_request(@user)
   end
 
   private
@@ -62,5 +44,27 @@ class UsersController < ApplicationController
 
   def users_params
     params.require(:user).permit(:name, :surname, :patronymic, :gender, :email)
+  end
+
+  def get_gender_request(user)
+    uri = URI.parse('https://cleaner.dadata.ru/api/v1/clean/name')
+    request = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' =>'application/json'})
+
+    request["Authorization"] = ENV['DADATA_AUTH_TOKEN']
+    request["X-Secret"] = ENV['DADATA_SECRET']
+
+    data = "#{user.surname} #{user.name} #{user.patronymic}".to_json
+    request.body = "[#{data}]"
+
+    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
+      http.request(request)
+    end
+
+    gender = JSON.parse(res.read_body)[0]['gender']
+
+    user.last_gender_update = DateTime.now
+    user.save!
+
+    return gender
   end
 end
