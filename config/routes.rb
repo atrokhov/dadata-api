@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:show, :new, :create, :destroy]
 
-  post "/users/:id/get_gender", to: "users#get_gender", as: "get_gender"
+  get "/users/:id/get_gender", to: "users#get_gender", as: "get_gender"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root to: 'users#edit'

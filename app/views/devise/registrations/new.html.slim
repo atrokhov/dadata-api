@@ -8,19 +8,9 @@ h2
   = f.email_field :email, autofocus: true, autocomplete: "email"
 
   .field
-    = f.label :surname
+    = f.label :full_name
   br
-  = f.text_field :surname, autocomplete: "surname"
-
-  .field
-    = f.label :name
-  br
-  = f.text_field :name, autocomplete: "name"
-
-  .field
-    = f.label :patronymic
-  br
-  = f.text_field :patronymic, autocomplete: "patronymic"
+  = f.text_field :full_name, autocomplete: "full_name"
   
   .field
     = f.label :password

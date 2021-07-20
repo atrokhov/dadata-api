@@ -21,9 +21,7 @@ ActiveRecord::Schema.define(version: 2021_07_18_182048) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "surname"
-    t.string "name"
-    t.string "patronymic"
+    t.string "full_name"
     t.integer "gender"
     t.integer "role", default: 1
     t.datetime "last_gender_update"

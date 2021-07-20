@@ -1,35 +1,82 @@
+p#notice
+  = notice
+
 h2
-  | Edit User
-= form_with(model: @user) do |f|
+  | Edit 
+  = @user.full_name
+= form_with(model: @user, local: false, id: "form") do |f|
+  
+  = f.hidden_field :id
+
+  = f.hidden_field :gender
+  
   .field
     = f.label :email
   	br
   	= f.email_field :email, autofocus: true, autocomplete: "email"
 
   .field
-    = f.label :surname
+    = f.label :full_name
   	br
-  	= f.text_field :surname, autocomplete: "surname"
-
-  .field
-    = f.label :name
-  	br
-  	= f.text_field :name, autocomplete: "name"
-
-  .field
-    = f.label :patronymic
-  	br
-  	= f.text_field :patronymic, autocomplete: "patronymic"
-
-  = link_to "Get gender", get_gender_path(@user), method: :post
+  	= f.text_field :full_name, autocomplete: "full_name"
 
   p 
   	| Last gender update:
   	= @user.last_gender_update
 
-  p 
-  	| Gender:
-  	= @gender
+  - if @user.gender == nil
+      p#gender_p
+  - else
+      p#gender_p
+        | Gender: 
+        = @user.gender
 
   .actions
-    = f.submit "Update"
+    = f.submit "Update", id: "submit"
+
+javascript:
+  function apply_gender(confirmation, gender, alt_gender){
+    if (confirmation) {
+      $('#gender_p').html("Gender: " + gender)
+      $('#user_gender').val(gender)
+    }else{
+      $('#gender_p').html("Gender: " + alt_gender)
+      $('#user_gender').val(alt_gender)
+    }
+  }
+
+  function get_gender(){
+    $.get("/users/" + $('#user_id').val() + "/get_gender").done(function(data){
+      gender = data.gender 
+      alt_gender = ""
+
+      if (gender == "female") {
+        alt_gender = "male"
+      }else{
+        alt_gender = "female"
+      }
+
+      confirmation = window.confirm("Gender authomatically recognized as: " + gender);
+      apply_gender(confirmation, gender, alt_gender)
+    });
+  }
+
+  $(document).ready(function() {
+    if ($('#gender').html == "") {
+      get_gender()
+    }
+
+    changed = false
+    $("#user_full_name").on("change paste keyup", function() {
+      changed = true 
+    });
+
+    $("#submit").click(function(event) {
+      if (changed) {
+        $.post("http://localhost:3000/users/" + $('#user_id').val(), $("#form").serialize()).done(function(){
+          get_gender()
+        });
+      }
+      event.preventDefault();
+    });
+  });
