@@ -29,7 +29,7 @@ class GetGenderJob < ApplicationJob
       user.gender = gender
       user.save!
 
-      return gender
+      return { gender: gender, last_gender_update: user.last_gender_update.strftime("%d %B %Y %T %Z") }
     else
       return 'error'
     end

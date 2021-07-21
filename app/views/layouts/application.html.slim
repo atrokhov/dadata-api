@@ -15,5 +15,9 @@ html
           |Navbar
         ul.navbar-nav
           li.nav-item
-            = link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link active'
+            - if current_user.admin?
+              = link_to 'Users', users_path
+          li.nav-item
+            - if user_signed_in?
+              = link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link active'
     = yield

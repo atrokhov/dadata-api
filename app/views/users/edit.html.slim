@@ -1,48 +1,52 @@
-p#notice
-  = notice
+center
+  .container.mt-3
+    .row.justify-content-md-center
+      .col-lg-4.border.bg-light
 
-h2
-  | Edit 
-  = @user.full_name
-= form_with(model: @user, local: false, id: "form") do |f|
-  
-  = f.hidden_field :id
+        p#notice
+          = notice
 
-  = f.hidden_field :gender
-  
-  .field
-    = f.label :email
-  	br
-  	= f.email_field :email, autofocus: true, autocomplete: "email"
+        h2
+          | Edit 
+          = @user.full_name
+        = form_with(model: @user, local: false, id: "form") do |f|
+          
+          = f.hidden_field :id
 
-  .field
-    = f.label :full_name
-  	br
-  	= f.text_field :full_name, autocomplete: "full_name"
+          = f.hidden_field :gender
+          
+          .mb-3
+            = f.label :email, class: 'form-label'
+          	= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
 
-  p 
-  	| Last gender update:
-  	= @user.last_gender_update
+          .mb-3
+            = f.label :full_name, class: 'form-label'
+          	= f.text_field :full_name, autocomplete: "full_name", class: "form-control"
 
-  - if @user.gender == nil
-      p#gender_p
-  - else
-      p#gender_p
-        | Gender: 
-        = @user.gender
+          p#gender_update
+            - if @user.last_gender_update != nil
+            	| Last gender update: 
+            	= @user.last_gender_update.strftime("%d %B %Y %T %Z")
 
-  .actions
-    = f.submit "Update", id: "submit"
+          p#gender_p
+            - if @user.gender != nil
+                | Gender: 
+                = @user.gender
+                
+
+          .actions
+            = f.submit "Update", id: "submit", class: "btn btn-primary"
 
 javascript:
-  function apply_gender(confirmation, gender, alt_gender){
+  function apply_gender(confirmation, gender, alt_gender, last_gender_update){
     if (confirmation) {
-      $('#gender_p').html("Gender: " + gender)
+      $('#gender_p').text("Gender: " + gender)
       $('#user_gender').val(gender)
     }else{
-      $('#gender_p').html("Gender: " + alt_gender)
+      $('#gender_p').text("Gender: " + alt_gender)
       $('#user_gender').val(alt_gender)
     }
+    $('#gender_update').text("Last gender update: " + last_gender_update)
   }
 
   function get_gender(){
@@ -57,12 +61,12 @@ javascript:
       }
 
       confirmation = window.confirm("Gender authomatically recognized as: " + gender);
-      apply_gender(confirmation, gender, alt_gender)
+      apply_gender(confirmation, gender, alt_gender, data.last_gender_update)
     });
   }
 
   $(document).ready(function() {
-    if ($('#gender').html == "") {
+    if ($('#gender_p').is(':empty')) {
       get_gender()
     }
 

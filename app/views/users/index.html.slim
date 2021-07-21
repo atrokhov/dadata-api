@@ -1,6 +1,6 @@
 h1
   | Users
-table
+table.table.table-striped
   thead
     tr
       th
@@ -27,6 +27,9 @@ table
         td
           = user.gender
         td
-          = user.last_gender_update
+          - if user.last_gender_update != nil
+            = user.last_gender_update.strftime("%d %B %Y %T %Z")
+          - else
+            | Not requested
         td
           = link_to 'Edit', edit_user_path(user)

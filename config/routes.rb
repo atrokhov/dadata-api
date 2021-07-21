@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get "/users/:id/get_gender", to: "users#get_gender", as: "get_gender"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root to: 'users#edit'
+  root to: 'users#index'
 end
