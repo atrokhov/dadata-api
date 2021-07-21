@@ -15,19 +15,23 @@ class GetGenderJob < ApplicationJob
       http.request(request)
     end
 
-    gender = nil
-    gender_unformat = JSON.parse(res.read_body)[0]['gender']
-    
-    if gender_unformat == "Ж"
-      gender = :female
+    if !res.read_body.include? 'status'
+      gender = nil
+      gender_unformat = JSON.parse(res.read_body)[0]['gender']
+      
+      if gender_unformat == "Ж"
+        gender = :female
+      else
+        gender = :male
+      end
+
+      user.last_gender_update = DateTime.now
+      user.gender = gender
+      user.save!
+
+      return gender
     else
-      gender = :male
+      return 'error'
     end
-
-    user.last_gender_update = DateTime.now
-    user.gender = gender
-    user.save!
-
-    gender
   end
 end
