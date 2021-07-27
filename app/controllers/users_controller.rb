@@ -1,22 +1,23 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:edit, :update, :get_gender]
+  before_action :set_user, only: %i[edit update get_gender]
 
   def index
-    if user_signed_in? and current_user.admin?
+    if user_signed_in? && current_user.admin?
       @users = User.all
-    elsif user_signed_in? and current_user.client?
+    elsif user_signed_in? && current_user.client?
       redirect_to edit_user_path(current_user)
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     respond_to do |format|
       if @user.update(users_params)
-        format.html { redirect_to edit_user_path(@user), notice: "User was successfully updated." }
+        format.html { redirect_to edit_user_path(@user), notice: 'User was successfully updated.' }
         format.js
         format.json { render json: :edit, status: :ok }
       else
@@ -34,9 +35,9 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    if user_signed_in? and current_user.admin?
+    if user_signed_in? && current_user.admin?
       @user = User.find(params[:id])
-    elsif user_signed_in? and current_user.client?
+    elsif user_signed_in? && current_user.client?
       @user = User.find(current_user.id)
     end
   end
