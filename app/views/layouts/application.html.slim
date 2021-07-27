@@ -3,7 +3,7 @@ html
   head
     title
       | DadataApi
-    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    meta[name='viewport' content='width=device-width,initial-scale=1']
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -19,5 +19,5 @@ html
               = link_to 'Users', users_path
           li.nav-item
             - if user_signed_in?
-              = link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link active'
+              = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link active'
     = yield
