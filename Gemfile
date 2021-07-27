@@ -65,3 +65,5 @@ gem "slim-rails", '~> 3.2.0'
 gem 'rexml', '~> 3.2.5'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'sidekiq', '~> 6.0.2'
+gem 'rubocop', '~> 1.18', require: false
+gem 'slim_lint', '~> 0.22.0', require: false
