@@ -1,5 +1,3 @@
-app/views/devise/shared/_links.html.slim:2 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-app/views/devise/shared/_links.html.slim:5 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/layouts/application.html.slim:14 [W] TrailingWhitespace: Line contains trailing whitespace
 app/views/layouts/application.html.slim:22 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/layouts/mailer.html.slim:6 [W] TrailingWhitespace: Line contains trailing whitespace
