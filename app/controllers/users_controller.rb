@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def get_gender
+  def gender
     gender = get_gender_request(@user)
     render json: gender, status: :ok
   end

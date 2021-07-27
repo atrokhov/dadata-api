@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
 app/controllers/users_controller.rb:3:1: C: Style/Documentation: Missing top-level class documentation comment.
 class UsersController < ApplicationController
 ^^^^^
-app/controllers/users_controller.rb:30:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
-  def get_gender
-      ^^^^^^^^^^
 app/helpers/application_helper.rb:3:1: C: Style/Documentation: Missing top-level module documentation comment.
 module ApplicationHelper
 ^^^^^^
@@ -49,4 +46,4 @@ db/migrate/20210718182048_devise_create_users.rb:3:1: C: Style/Documentation: Mi
 class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 ^^^^^
 
-56 files inspected, 15 offenses detected
+56 files inspected, 14 offenses detected
