@@ -1,4 +1,4 @@
 app/views/users/edit.html.slim:27 [W] RuboCop: Style/NegatedIf: Favor `unless` over `if` for negative conditions.
-app/views/users/edit.html.slim:32 [W] RuboCop: Style/NonNilCheck: Prefer `!@user.gender.nil?` over `@user.gender != nil`.
+app/views/users/edit.html.slim:32 [W] RuboCop: Style/NegatedIf: Favor `unless` over `if` for negative conditions.
 app/views/users/index.html.slim:30 [W] RuboCop: Style/NonNilCheck: Prefer `!user.last_gender_update.nil?` over `user.last_gender_update != nil`.
 app/views/users/index.html.slim:31 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.

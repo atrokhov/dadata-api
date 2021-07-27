@@ -29,7 +29,7 @@ center
               = @user.last_gender_update.strftime('%d %B %Y %T %Z')
 
           p#gender_p
-            - if @user.gender != nil
+            - if !@user.gender.nil?
                 | Gender:
                 = @user.gender
 
