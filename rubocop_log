@@ -1,19 +1,4 @@
 Inspecting 56 files
-.........C...C..........................................
+........................................................
 
-Offenses:
-
-app/jobs/get_gender_job.rb:6:3: C: Metrics/AbcSize: Assignment Branch Condition size for perform is too high. [<10, 31, 6> 33.12/17]
-  def perform(user) ...
-  ^^^^^^^^^^^^^^^^^
-app/jobs/get_gender_job.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [26/20]
-  def perform(user) ...
-  ^^^^^^^^^^^^^^^^^
-bin/bundle:24:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for cli_arg_version is too high. [9/7]
-  def cli_arg_version ...
-  ^^^^^^^^^^^^^^^^^^^
-bin/bundle:24:3: C: Metrics/PerceivedComplexity: Perceived complexity for cli_arg_version is too high. [9/8]
-  def cli_arg_version ...
-  ^^^^^^^^^^^^^^^^^^^
-
-56 files inspected, 4 offenses detected
+56 files inspected, no offenses detected
