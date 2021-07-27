@@ -1,2 +1,1 @@
-app/views/users/index.html.slim:30 [W] RuboCop: Style/NonNilCheck: Prefer `!user.last_gender_update.nil?` over `user.last_gender_update != nil`.
 app/views/users/index.html.slim:31 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.

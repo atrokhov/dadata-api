@@ -27,7 +27,7 @@ table.table.table-striped
         td
           = user.gender
         td
-          - if user.last_gender_update != nil
+          - if !user.last_gender_update.nil?
             = user.last_gender_update.strftime("%d %B %Y %T %Z")
           - else
             | Not requested
