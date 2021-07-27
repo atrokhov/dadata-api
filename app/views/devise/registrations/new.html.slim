@@ -4,7 +4,6 @@ center
       .col-lg-4.border.bg-light
         h2
           | Sign up
-          
         = form_for(resource, as: resource_name, url: new_registration_path) do |f|
           = render "devise/shared/error_messages", resource: resource
 
@@ -15,7 +14,7 @@ center
           .mb-3
             = f.label :full_name, class: 'form-label'
             = f.text_field :full_name, autocomplete: "full_name", class: "form-control"
-          
+
           .mb-3
             = f.label :password, class: 'form-label'
             = f.password_field :password, autocomplete: "new-password", class: "form-control", aria: { describedby: "passwordHelp" }

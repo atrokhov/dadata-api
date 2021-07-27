@@ -1,10 +1,8 @@
-app/views/devise/registrations/new.html.slim:7 [W] TrailingWhitespace: Line contains trailing whitespace
 app/views/devise/registrations/new.html.slim:9 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/devise/registrations/new.html.slim:13 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/devise/registrations/new.html.slim:13 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/devise/registrations/new.html.slim:17 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/devise/registrations/new.html.slim:17 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-app/views/devise/registrations/new.html.slim:18 [W] TrailingWhitespace: Line contains trailing whitespace
 app/views/devise/registrations/new.html.slim:21 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/devise/registrations/new.html.slim:21 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/devise/registrations/new.html.slim:21 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
