@@ -1,49 +1,19 @@
 Inspecting 56 files
-....CCCC.W.C.C........C...................C.............
+.........C...C..........................................
 
 Offenses:
 
-app/controllers/application_controller.rb:3:1: C: Style/Documentation: Missing top-level class documentation comment.
-class ApplicationController < ActionController::Base
-^^^^^
-app/controllers/users_controller.rb:3:1: C: Style/Documentation: Missing top-level class documentation comment.
-class UsersController < ApplicationController
-^^^^^
-app/helpers/application_helper.rb:3:1: C: Style/Documentation: Missing top-level module documentation comment.
-module ApplicationHelper
-^^^^^^
-app/helpers/users_helper.rb:3:1: C: Style/Documentation: Missing top-level module documentation comment.
-module UsersHelper
-^^^^^^
-app/jobs/get_gender_job.rb:3:1: C: Style/Documentation: Missing top-level class documentation comment.
-class GetGenderJob < ApplicationJob
-^^^^^
-app/jobs/get_gender_job.rb:6:3: C: Metrics/AbcSize: Assignment Branch Condition size for perform is too high. [<14, 29, 6> 32.76/17]
+app/jobs/get_gender_job.rb:6:3: C: Metrics/AbcSize: Assignment Branch Condition size for perform is too high. [<10, 31, 6> 33.12/17]
   def perform(user) ...
   ^^^^^^^^^^^^^^^^^
-app/jobs/get_gender_job.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [24/20]
+app/jobs/get_gender_job.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [26/20]
   def perform(user) ...
   ^^^^^^^^^^^^^^^^^
-app/jobs/get_gender_job.rb:8:45: W: Lint/UselessAssignment: Useless assignment to variable - initheader.
-    request = Net::HTTP::Post.new(uri.path, initheader = { 'Content-Type' => 'application/json' })
-                                            ^^^^^^^^^^
-app/jobs/get_gender_job.rb:21:7: W: Lint/UselessAssignment: Useless assignment to variable - gender.
-      gender = nil
-      ^^^^^^
-app/models/application_record.rb:3:1: C: Style/Documentation: Missing top-level class documentation comment.
-class ApplicationRecord < ActiveRecord::Base
-^^^^^
 bin/bundle:24:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for cli_arg_version is too high. [9/7]
   def cli_arg_version ...
   ^^^^^^^^^^^^^^^^^^^
 bin/bundle:24:3: C: Metrics/PerceivedComplexity: Perceived complexity for cli_arg_version is too high. [9/8]
   def cli_arg_version ...
   ^^^^^^^^^^^^^^^^^^^
-config/application.rb:12:3: C: Style/Documentation: Missing top-level class documentation comment.
-  class Application < Rails::Application
-  ^^^^^
-db/migrate/20210718182048_devise_create_users.rb:3:1: C: Style/Documentation: Missing top-level class documentation comment.
-class DeviseCreateUsers < ActiveRecord::Migration[6.1]
-^^^^^
 
-56 files inspected, 14 offenses detected
+56 files inspected, 4 offenses detected

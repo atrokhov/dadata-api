@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: %i[edit update get_gender]
+  before_action :set_user, only: %i[edit update gender]
 
   def index
     if user_signed_in? && current_user.admin?

@@ -85,11 +85,11 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'GET /get_gender' do
+  describe 'PATCH /gender' do
     it 'returns http found and redirect to login page if user is not authorized' do
       user = User.create(email: 'test@test.com', password: 'password', password_confirmation: 'password',
                          role: :client, full_name: 'Атрохов Артур Эдуардович')
-      get "/users/#{user.id}/get_gender"
+      patch "/users/#{user.id}/gender"
       expect(response).to have_http_status(:found)
       expect(response).to redirect_to(new_user_session_url)
     end
@@ -98,7 +98,7 @@ RSpec.describe 'Users', type: :request do
       user1 = User.create(email: 'test1@test.com', password: 'password', password_confirmation: 'password',
                           role: :client, full_name: 'Атрохов Артур Эдуардович')
       sign_in user1
-      get "/users/#{user1.id}/get_gender"
+      patch "/users/#{user1.id}/gender"
       expect(response).to have_http_status(:success)
       expect(response.body).to include 'gender'
     end
@@ -109,7 +109,7 @@ RSpec.describe 'Users', type: :request do
       user2 = User.create(email: 'test2@test.com', password: 'password', password_confirmation: 'password',
                           role: :client, full_name: 'Атрохова Янита')
       sign_in user1
-      get "/users/#{user2.id}/get_gender"
+      patch "/users/#{user2.id}/gender"
       expect(response).to have_http_status(:success)
       expect(response.body).to include 'male'
     end
@@ -120,7 +120,7 @@ RSpec.describe 'Users', type: :request do
       user2 = User.create(email: 'test2@test.com', password: 'password', password_confirmation: 'password',
                           role: :client, full_name: 'Атрохова Янита')
       sign_in user1
-      get "/users/#{user2.id}/get_gender"
+      patch "/users/#{user2.id}/gender"
       expect(response).to have_http_status(:success)
       expect(response.body).to include 'female'
     end

@@ -5,10 +5,12 @@ class GetGenderJob < ApplicationJob
 
   def perform(user)
     uri = URI.parse('https://cleaner.dadata.ru/api/v1/clean/name')
-    request = Net::HTTP::Post.new(uri.path, initheader = { 'Content-Type' => 'application/json' })
-
-    request['Authorization'] = ENV['DADATA_AUTH_TOKEN']
-    request['X-Secret'] = ENV['DADATA_SECRET']
+    request = Net::HTTP::Post.new(uri.path,
+                                  {
+                                    'Content-Type' => 'application/json',
+                                    'Authorization' => Rails.application.credentials.dadata_api_token,
+                                    'X-Secret' => Rails.application.credentials.dadata_secret
+                                  })
 
     data = user.full_name.to_s.to_json
     request.body = "[#{data}]"
@@ -18,7 +20,6 @@ class GetGenderJob < ApplicationJob
     end
 
     if !res.read_body.include? 'status'
-      gender = nil
       gender_unformat = JSON.parse(res.read_body)[0]['gender']
 
       gender = if gender_unformat == 'Ж'
