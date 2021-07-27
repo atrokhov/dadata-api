@@ -13,7 +13,7 @@ table.table.table-striped
         | Gender
       th
         | Last gender update
-      th[colspan="1"]
+      th[colspan='1']
         | Actions
   tbody
     - @users.each do |user|
@@ -28,7 +28,7 @@ table.table.table-striped
           = user.gender
         td
           - if !user.last_gender_update.nil?
-            = user.last_gender_update.strftime("%d %B %Y %T %Z")
+            = user.last_gender_update.strftime('%d %B %Y %T %Z')
           - else
             | Not requested
         td
