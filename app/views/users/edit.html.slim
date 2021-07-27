@@ -9,7 +9,7 @@ center
         h2
           | Edit
           = @user.full_name
-        = form_with(model: @user, local: false, id: "form") do |f|
+        = form_with(model: @user, local: false, id: 'form') do |f|
 
           = f.hidden_field :id
 
@@ -17,16 +17,16 @@ center
 
           .mb-3
             = f.label :email, class: 'form-label'
-          	= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+          	= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
 
           .mb-3
             = f.label :full_name, class: 'form-label'
-          	= f.text_field :full_name, autocomplete: "full_name", class: "form-control"
+          	= f.text_field :full_name, autocomplete: 'full_name', class: 'form-control'
 
           p#gender_update
             - if @user.last_gender_update != nil
             	| Last gender update:
-            	= @user.last_gender_update.strftime("%d %B %Y %T %Z")
+            	= @user.last_gender_update.strftime('%d %B %Y %T %Z')
 
           p#gender_p
             - if @user.gender != nil
@@ -34,32 +34,32 @@ center
                 = @user.gender
 
           .actions
-            = f.submit "Update", id: "submit", class: "btn btn-primary"
+            = f.submit 'Update', id: 'submit', class: 'btn btn-primary'
 
 javascript:
   function apply_gender(confirmation, gender, alt_gender, last_gender_update){
     if (confirmation) {
-      $('#gender_p').text("Gender: " + gender)
+      $('#gender_p').text('Gender: ' + gender)
       $('#user_gender').val(gender)
     }else{
-      $('#gender_p').text("Gender: " + alt_gender)
+      $('#gender_p').text('Gender: ' + alt_gender)
       $('#user_gender').val(alt_gender)
     }
-    $('#gender_update').text("Last gender update: " + last_gender_update)
+    $('#gender_update').text('Last gender update: ' + last_gender_update)
   }
 
   function get_gender(){
-    $.get("/users/" + $('#user_id').val() + "/get_gender").done(function(data){
+    $.get('/users/' + $('#user_id').val() + '/get_gender').done(function(data){
       gender = data.gender
-      alt_gender = ""
+      alt_gender = ''
 
-      if (gender == "female") {
-        alt_gender = "male"
+      if (gender == 'female') {
+        alt_gender = 'male'
       }else{
-        alt_gender = "female"
+        alt_gender = 'female'
       }
 
-      confirmation = window.confirm("Gender authomatically recognized as: " + gender);
+      confirmation = window.confirm('Gender authomatically recognized as: ' + gender);
       apply_gender(confirmation, gender, alt_gender, data.last_gender_update)
     });
   }
@@ -70,13 +70,13 @@ javascript:
     }
 
     changed = false
-    $("#user_full_name").on("change paste keyup", function() {
+    $('#user_full_name').on('change paste keyup', function() {
       changed = true
     });
 
-    $("#submit").click(function(event) {
+    $('#submit').click(function(event) {
       if (changed) {
-        $.post("http://localhost:3000/users/" + $('#user_id').val(), $("#form").serialize()).done(function(){
+        $.post('http://localhost:3000/users/' + $('#user_id').val(), $('#form').serialize()).done(function(){
           get_gender()
         });
       }
