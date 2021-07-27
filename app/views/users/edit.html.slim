@@ -7,14 +7,14 @@ center
           = notice
 
         h2
-          | Edit 
+          | Edit
           = @user.full_name
         = form_with(model: @user, local: false, id: "form") do |f|
-          
+
           = f.hidden_field :id
 
           = f.hidden_field :gender
-          
+
           .mb-3
             = f.label :email, class: 'form-label'
           	= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
@@ -25,14 +25,13 @@ center
 
           p#gender_update
             - if @user.last_gender_update != nil
-            	| Last gender update: 
+            	| Last gender update:
             	= @user.last_gender_update.strftime("%d %B %Y %T %Z")
 
           p#gender_p
             - if @user.gender != nil
-                | Gender: 
+                | Gender:
                 = @user.gender
-                
 
           .actions
             = f.submit "Update", id: "submit", class: "btn btn-primary"
@@ -51,7 +50,7 @@ javascript:
 
   function get_gender(){
     $.get("/users/" + $('#user_id').val() + "/get_gender").done(function(data){
-      gender = data.gender 
+      gender = data.gender
       alt_gender = ""
 
       if (gender == "female") {
@@ -72,7 +71,7 @@ javascript:
 
     changed = false
     $("#user_full_name").on("change paste keyup", function() {
-      changed = true 
+      changed = true
     });
 
     $("#submit").click(function(event) {
