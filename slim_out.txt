@@ -1,7 +1,3 @@
-app/views/devise/sessions/new.html.slim:11 [W] TrailingWhitespace: Line contains trailing whitespace
-app/views/devise/sessions/new.html.slim:15 [W] TrailingWhitespace: Line contains trailing whitespace
-app/views/devise/sessions/new.html.slim:17 [W] TrailingWhitespace: Line contains trailing whitespace
-app/views/devise/sessions/new.html.slim:21 [W] TrailingWhitespace: Line contains trailing whitespace
 app/views/devise/shared/_error_messages.html.slim:4 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/devise/shared/_links.html.slim:2 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 app/views/devise/shared/_links.html.slim:5 [W] RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
